@@ -91,4 +91,8 @@
     NSLog(@"Date selection was canceled");
 }
 
+- (void)dateSelectionViewControllerDidSelectNow:(RMDateSelectionViewController *)vc {
+    NSLog(@"Now is selected!");
+}
+
 @end

@@ -305,6 +305,10 @@ static NSString *_localizedSelectTitle = @"Select";
     self.view.backgroundColor = [UIColor clearColor];
     self.view.layer.masksToBounds = YES;
     
+    for (UIView* subview in self.view.subviews) {
+        [subview removeFromSuperview];
+    }
+    
     [self setupUIElements];
     [self setupConstraints];
     
@@ -489,7 +493,9 @@ static NSString *_localizedSelectTitle = @"Select";
 }
 
 - (IBAction)nowButtonPressed:(id)sender {
-    [self.datePicker setDate:[[NSDate date] dateByRoundingToMinutes:self.datePicker.minuteInterval]];
+    [self.delegate dateSelectionViewControllerDidSelectNow:self];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1];
+    //[self.datePicker setDate:[[NSDate date] dateByRoundingToMinutes:self.datePicker.minuteInterval]];
 }
 
 @end
